@@ -21,7 +21,9 @@ export const Login = ({ cover }) => {
   const dispatch = useDispatch();
   const [formData, setFormData] = useState(initialSate);
 
-  const { isLoading, isSuccess, isError, isLoggedIn, twoFactor } = useSelector((state) => state.auth);
+  const { isLoading, isSuccess, isError, isLoggedIn, twoFactor } = useSelector(
+    (state) => state.auth
+  );
   const { password, email } = formData;
 
   const handleInputChange = (e) => {
@@ -58,22 +60,38 @@ export const Login = ({ cover }) => {
 
   return (
     <>
-      <section className="login h-[100vh]">
-        <div className="flex justify-between">
-          <div className="left w-2/3">
-            <div className="h-[100vh] w-full">
-              <img src={cover} alt="cover" className=" w-full h-full object-cover" />
-            </div>
+      <section className="">
+        <div className="my-container grid md:grid-cols-2 items-center  justify-items-center md:justify-normal mt-[2rem]  lg:gap-[2rem] max-w-[1000px]">
+          <div className="hidden md:block h-full">
+            <img
+              src={cover}
+              alt="cover"
+              className=" w-full h-full object-cover md:h-full"
+            />
           </div>
-          <div className="right w-1/3 px-16 py-10">
+          <div className="lg:w-full">
             <div className="text-center">
               <LogoComponent />
             </div>
-            <h3 className="text-lg text-center mt-12 font-medium">Login</h3>
+            <h3 className="text-lg text-center ">Login</h3>
             {isLoading && <Loader />}
-            <form className="flex flex-col gap-5 my-5" onSubmit={loginUser}>
-              <Input name="email" value={email} onChange={handleInputChange} label="Email" color="red" size="lg" />
-              <Input name="password" value={password} onChange={handleInputChange} label="Password" color="red" size="lg" />
+            <form className="flex flex-col gap-5 md:my-5" onSubmit={loginUser}>
+              <Input
+                name="email"
+                value={email}
+                onChange={handleInputChange}
+                label="Email"
+                color="red"
+                size="lg"
+              />
+              <Input
+                name="password"
+                value={password}
+                onChange={handleInputChange}
+                label="Password"
+                color="red"
+                size="lg"
+              />
               <button type="submit" className="primary-btn rounded-lg">
                 Login
               </button>
@@ -81,16 +99,20 @@ export const Login = ({ cover }) => {
 
             <h3 className="text-sm text-center">
               Don’t you have an account?
-              <Link href="/auth/register" className="text-primary font-semibold">
+              <Link
+                href="/auth/register"
+                className="text-primary font-semibold">
                 Sign up
               </Link>
             </h3>
             <h3 className="text-sm text-center">
-              <Link href="/auth/forgetpassword" className="text-primary font-semibold">
+              <Link
+                href="/auth/forgetpassword"
+                className="text-primary font-semibold">
                 Forget Password
               </Link>
             </h3>
-            <h3 className="text-lg text-center my-8 font-medium">OR</h3>
+            <h3 className="text-lg text-center my-2 md:my-8 font-medium">OR</h3>
 
             <div className="flex items-center justify-center gap-4">
               <IconButton size="lg" variant="outlined" color="blue-gray">
@@ -104,10 +126,14 @@ export const Login = ({ cover }) => {
               </IconButton>
             </div>
 
-            <div className="text-xl font-semibold flex justify-center items-center gap-2 mt-8">
+            <div className="text-xl font-semibold flex justify-center items-center gap-2 mt-4 md:mt-8">
               <span className="text-[#208E9F]">By</span>
               <div className="h-8">
-                <img src="/images/apptec.png" alt="apptech" className="w-full h-full object-contain" />
+                <img
+                  src="/images/apptec.png"
+                  alt="apptech"
+                  className="w-full h-full object-contain"
+                />
               </div>
             </div>
           </div>

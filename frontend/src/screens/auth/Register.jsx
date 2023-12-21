@@ -1,5 +1,10 @@
 import { AiFillEye, AiFillEyeInvisible } from "react-icons/ai";
-import { Button, IconButton, Input, Typography } from "@material-tailwind/react";
+import {
+  Button,
+  IconButton,
+  Input,
+  Typography,
+} from "@material-tailwind/react";
 import Link from "next/link";
 import React, { useState, useEffect } from "react";
 import { FcGoogle } from "react-icons/fc";
@@ -7,7 +12,11 @@ import { BsCheckAll, BsFacebook } from "react-icons/bs";
 import { HiOutlineMail } from "react-icons/hi";
 import { useRouter } from "next/router";
 import { useDispatch, useSelector } from "react-redux";
-import { RESET, register, sendVerificationEmail } from "@/redux/slices/authSlice";
+import {
+  RESET,
+  register,
+  sendVerificationEmail,
+} from "@/redux/slices/authSlice";
 import { toast } from "react-toastify";
 import { Loader } from "@/components/common/Loader";
 import { validateEmail } from "@/redux/services/authService";
@@ -22,7 +31,9 @@ const initialSate = {
 export const Register = ({ cover }) => {
   const navigate = useRouter();
   const dispatch = useDispatch();
-  const { isLoading, isSuccess, isLoggedIn } = useSelector((state) => state.auth);
+  const { isLoading, isSuccess, isLoggedIn } = useSelector(
+    (state) => state.auth
+  );
 
   const [formData, setFormData] = useState(initialSate);
   const [upperCase, setUpperCase] = useState(false);
@@ -107,26 +118,52 @@ export const Register = ({ cover }) => {
   return (
     <>
       <section className="login h-[100vh]">
-        <div className="flex justify-between">
-          <div className="left w-2/3">
+        <div className="flex  justify-center gap-[2rem] items-center ">
+          <div className=" hidden md:block md:w-1/2  lg:w-2/3">
             <div className="h-[100vh] w-full">
-              <img src={cover} alt="l1" className=" w-full h-full object-cover" />
+              <img
+                src={cover}
+                alt="l1"
+                className="  md:block w-full h-full object-cover"
+              />
             </div>
           </div>
-          <div className="right w-1/3 px-16 py-2">
+          <div className="right md:w-1/2 lg:w-1/3 md:pr-[1rem]  py-2">
             <div className="text-center">
               <Link href="/">
                 <Typography color="red" variant="h2">
-                  SnapHub
+                  Pixel Nepal
                 </Typography>
               </Link>
             </div>
-            <h3 className="text-lg text-center mt-12 font-medium">Create an account</h3>
+            <h3 className="text-lg text-center md:mt-3 lg:mt-12  font-medium">
+              Create an account
+            </h3>
             {isLoading && <Loader />}
             <form className="flex flex-col gap-5 my-5" onSubmit={registerUser}>
-              <Input name="name" value={name} onChange={handleInputChange} label="Username" color="red" size="lg" />
-              <Input name="email" value={email} onChange={handleInputChange} label="Email" color="red" size="lg" />
-              <PasswordInput placeholder="Password" required name="password" value={password} onChange={handleInputChange} />
+              <Input
+                name="name"
+                value={name}
+                onChange={handleInputChange}
+                label="Username"
+                color="red"
+                size="lg"
+              />
+              <Input
+                name="email"
+                value={email}
+                onChange={handleInputChange}
+                label="Email"
+                color="red"
+                size="lg"
+              />
+              <PasswordInput
+                placeholder="Password"
+                required
+                name="password"
+                value={password}
+                onChange={handleInputChange}
+              />
               <PasswordInput
                 placeholder="Confirm Password"
                 required
@@ -142,19 +179,31 @@ export const Register = ({ cover }) => {
               <button className="primary-btn rounded-lg">Register</button>
             </form>
             <ul className="box my-3 border border-indigo-300 p-3 rounded-lg">
-              <li className={`text-[12px] ${upperCase ? "text-green-500" : "text-gray-500"} flex items-center gap-2`}>
+              <li
+                className={`text-[12px] ${
+                  upperCase ? "text-green-500" : "text-gray-500"
+                } flex items-center gap-2`}>
                 {switchIcon(upperCase)}
                 Lowercase & Uppercase
               </li>
-              <li className={`text-[12px] ${number ? "text-green-500" : "text-gray-500"} flex items-center gap-2`}>
+              <li
+                className={`text-[12px] ${
+                  number ? "text-green-500" : "text-gray-500"
+                } flex items-center gap-2`}>
                 {switchIcon(number)}
                 Number (0-9)
               </li>
-              <li className={`text-[12px] ${specialChar ? "text-green-500" : "text-gray-500"} flex items-center gap-2`}>
+              <li
+                className={`text-[12px] ${
+                  specialChar ? "text-green-500" : "text-gray-500"
+                } flex items-center gap-2`}>
                 {switchIcon(specialChar)}
                 Special Character (!@#$%^&*)
               </li>
-              <li className={`text-[12px] ${passwordLength ? "text-green-500" : "text-gray-500"} flex items-center gap-2`}>
+              <li
+                className={`text-[12px] ${
+                  passwordLength ? "text-green-500" : "text-gray-500"
+                } flex items-center gap-2`}>
                 {switchIcon(passwordLength)}
                 At least 8 Character
               </li>
@@ -165,7 +214,9 @@ export const Register = ({ cover }) => {
                 Log in
               </Link>
             </h3>
-            <h3 className="text-lg text-center my-8 font-medium">OR</h3>
+            <h3 className="text-lg text-center md:my-3 lg:my-8 font-medium">
+              OR
+            </h3>
             {/*     <Button size="lg" variant="gradient" color="indigo"NEXT>
                 Continue with Google
                 <span className="absolute left-0 grid h-full w-12 place-items-center bg-indigo-600 transition-colors group-hover:bg-indigo-700">
@@ -197,7 +248,14 @@ export const Register = ({ cover }) => {
   );
 };
 
-export const PasswordInput = ({ fieldName, value, name, onChange, onPaste, placeholder }) => {
+export const PasswordInput = ({
+  fieldName,
+  value,
+  name,
+  onChange,
+  onPaste,
+  placeholder,
+}) => {
   const [showPassword, setShowPassword] = useState(false);
 
   const togglePassword = () => {
@@ -207,10 +265,29 @@ export const PasswordInput = ({ fieldName, value, name, onChange, onPaste, place
   return (
     <>
       <div className="input">
-        <label className="block my-2 text-sm font-medium text-gray-900">{fieldName}</label>
+        <label className="block my-2 text-sm font-medium text-gray-900">
+          {fieldName}
+        </label>
 
         <div className="relative">
-          <Input color="red" label={placeholder} type={showPassword ? "text" : "password"} value={value} name={name} onChange={onChange} onPaste={onPaste} icon={<div onClick={togglePassword}>{showPassword ? <AiFillEyeInvisible size={25} /> : <AiFillEye size={25} />}</div>} />
+          <Input
+            color="red"
+            label={placeholder}
+            type={showPassword ? "text" : "password"}
+            value={value}
+            name={name}
+            onChange={onChange}
+            onPaste={onPaste}
+            icon={
+              <div onClick={togglePassword}>
+                {showPassword ? (
+                  <AiFillEyeInvisible size={25} />
+                ) : (
+                  <AiFillEye size={25} />
+                )}
+              </div>
+            }
+          />
         </div>
       </div>
     </>

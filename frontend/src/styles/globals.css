@@ -16,7 +16,12 @@ body {
   overflow: hidden;
   margin: 0;
   height: 40vh;
-  background: linear-gradient(0deg, rgba(17, 17, 17, 0.9), rgba(17, 17, 17, 0.9)), url("../../public/images/bg1.png");
+  background: linear-gradient(
+      0deg,
+      rgba(17, 17, 17, 0.9),
+      rgba(17, 17, 17, 0.9)
+    ),
+    url("../../public/images/bg1.png");
 }
 
 .explore3::after {

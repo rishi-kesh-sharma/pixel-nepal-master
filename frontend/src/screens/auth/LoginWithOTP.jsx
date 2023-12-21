@@ -13,7 +13,9 @@ export const LoginWithOTP = ({ cover }) => {
 
   const [loginCode, setLoginCode] = useState("");
 
-  const { isLoading, isSuccess, isLoggedIn } = useSelector((state) => state.auth);
+  const { isLoading, isSuccess, isLoggedIn } = useSelector(
+    (state) => state.auth
+  );
 
   const senduserLoginCode = async () => {
     await dispatch(sendLoginCode(email));
@@ -45,26 +47,39 @@ export const LoginWithOTP = ({ cover }) => {
 
   return (
     <>
-      <div className="login h-[100vh]">
-        <div className="flex justify-between">
-          <div className="left w-2/3">
-            <div className="h-[100vh] w-full">
-              <img src={cover} alt="cover" className=" w-full h-full object-cover" />
+      <div className="login h-[100vh] mt-[3rem]">
+        <div className="flex w-full justify-center items-center h-full md:gap-[2rem]">
+          <div className="left md:w-1/2 lg:w-2/3">
+            <div className="w-full hidden md:block pl-[1rem]">
+              <img src={cover} alt="cover" className=" w-full  object-cover" />
             </div>
           </div>
-          <div className="right w-1/3 px-16 py-10">
+          <div className="right md:w-1/2 lg:w-1/3  md:py-10 md:px-[1rem]">
             <div className="w-full h-full flex justify-center items-center flex-col">
               <div className="text-center">
                 <LogoComponent />
               </div>
-              <h3 className="text-lg text-center mt-12 font-medium">Login with OTP</h3>
+              <h3 className="text-lg text-center mt-12 font-medium">
+                Login with OTP
+              </h3>
               {isLoading && <Loader />}
-              <form onSubmit={loginUserWithCode} className="flex flex-col gap-5 my-5 w-full">
-                <Input name="logincode" value={loginCode} onChange={(e) => setLoginCode(e.target.value)} label="Enter OTP" color="red" size="lg" />
+              <form
+                onSubmit={loginUserWithCode}
+                className="flex flex-col gap-5 my-5 w-full">
+                <Input
+                  name="logincode"
+                  value={loginCode}
+                  onChange={(e) => setLoginCode(e.target.value)}
+                  label="Enter OTP"
+                  color="red"
+                  size="lg"
+                />
                 <button type="submit" className="primary-btn rounded-lg">
                   Login
                 </button>
-                <p onClick={senduserLoginCode} className="block my-4 text-indigo-500 cursor-pointer">
+                <p
+                  onClick={senduserLoginCode}
+                  className="block my-4 text-indigo-500 cursor-pointer">
                   Resend Code
                 </p>
               </form>

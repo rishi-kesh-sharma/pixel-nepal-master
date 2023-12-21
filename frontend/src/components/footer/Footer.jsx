@@ -1,15 +1,16 @@
-import React from "react"
+import React from "react";
 
 export const Footer = () => {
   return (
     <>
-      <footer className='bg-black text-white py-5'>
-        <div className='containers'>
-          <h2 className='text-md font-medium'>
-            Design and Devloped by <span className='text-primary'>App Techonology</span>
+      <footer className="bg-black text-white py-5">
+        <div className="my-container">
+          <h2 className="text-md font-medium">
+            Design and Developed by{" "}
+            <span className="text-secondary">App Technologies</span>
           </h2>
         </div>
       </footer>
     </>
-  )
-}
+  );
+};

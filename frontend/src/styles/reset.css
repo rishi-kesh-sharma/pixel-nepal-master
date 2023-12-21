@@ -3,8 +3,8 @@
 @tailwind utilities;
 
 @layer components {
-  .containers {
-    @apply w-[80%] m-auto;
+  .my-container {
+    @apply container max-w-[95%] lg:max-w-[90%] xl:max-w-[85%] 2xl:max-w-[80%] m-auto;
   }
   .primary-btn {
     @apply px-5 py-3 bg-primary rounded-sm text-white text-sm border-2 border-primary transition ease-in-out delay-150  duration-300 capitalize hover:text-primary hover:bg-transparent dark:hover:text-white hover:border-2 hover:border-primary;

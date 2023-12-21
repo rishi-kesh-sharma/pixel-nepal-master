@@ -31,7 +31,7 @@ export const SearchHeader = () => {
 export const LogoText = () => {
   return (
     <Link href="/">
-      <h3 className="text-primary font-medium text-2xl">SnapHub</h3>
+      <h3 className="text-primary font-medium text-2xl">Pixel Nepal</h3>
     </Link>
   );
 };

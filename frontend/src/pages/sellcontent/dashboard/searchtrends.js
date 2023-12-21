@@ -6,7 +6,7 @@ const searchtrends = () => {
   return (
     <>
       <SellContentDashboardHeader />
-      <div className="containers">
+      <div className="my-container">
         <SearchTrends />
       </div>
     </>
