@@ -31,6 +31,7 @@ import { RESET, logout, selectUser } from "@/redux/slices/authSlice";
 import { useRouter } from "next/router";
 import { ShowOnLogout, ShowOnLogin } from "../protect/HiddenLink";
 import { RxHamburgerMenu } from "react-icons/rx";
+// import UserImage from ""
 
 function DropDownMenu() {
   return (
@@ -236,14 +237,14 @@ export const UserProfileAfterLogin = ({ logoutUser, photo, username }) => {
     <Menu placement="bottom-end">
       <MenuHandler>
         <Avatar
-          src={photo}
+          src={photo || "images/person.jpg"}
           size="sm"
           variant="circular"
           alt={username}
           className="cursor-pointer"
         />
       </MenuHandler>
-      <MenuList>
+      <MenuList className="z-50">
         <Link href="/sellcontent/dashboard" className="outline-none">
           <MenuItem className="flex items-center gap-2">
             <AiOutlineDashboard size={18} />
@@ -307,7 +308,9 @@ const HeaderMobile = () => {
   const dispatch = useDispatch();
   const navigate = useRouter();
   const user = useSelector(selectUser);
-  const photo = user?.avatar || "...";
+  // const photo = user?.avatar || "images/person.jpg";
+  const photo = "images/person.jpg";
+  console.log(photo, "the photo");
   const username = user?.name || "...";
   const logoutUser = async () => {
     dispatch(RESET());
@@ -327,6 +330,13 @@ const HeaderMobile = () => {
             pixel Nepal
           </Typography>
         </div>
+        <ShowOnLogin>
+          <UserProfileAfterLogin
+            photo={photo}
+            username={username}
+            logoutUser={logoutUser}
+          />
+        </ShowOnLogin>
         <SidebarMobile
           photo={photo}
           username={username}
@@ -450,16 +460,6 @@ function NavListMobile({ photo, username, logoutUser }) {
           </Link>
         </div>
       </ShowOnLogout>
-      <ShowOnLogin>
-        {/* <Button color="blue-gray" onClick={logoutUser}> */}
-      </ShowOnLogin>
-      <ShowOnLogin>
-        <UserProfileAfterLogin
-          photo={photo}
-          username={username}
-          logoutUser={logoutUser}
-        />
-      </ShowOnLogin>
     </List>
   );
 }
@@ -469,9 +469,9 @@ const HeaderTab = () => {
   const dispatch = useDispatch();
   const navigate = useRouter();
   const user = useSelector(selectUser);
-  console.log(user);
 
-  const photo = user?.avatar || "...";
+  // const photo = user?.avatar || "...";
+  const photo = "images/person.jpg";
   const username = user?.name || "...";
   const logoutUser = async () => {
     dispatch(RESET());
@@ -655,7 +655,8 @@ const HeaderDesktop = () => {
   const user = useSelector(selectUser);
   console.log(user);
 
-  const photo = user?.avatar || "...";
+  // const photo = user?.avatar || "...";
+  const photo = "images/person.jpg";
   const username = user?.name || "...";
   const logoutUser = async () => {
     dispatch(RESET());

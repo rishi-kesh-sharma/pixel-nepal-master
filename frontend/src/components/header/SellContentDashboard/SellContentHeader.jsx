@@ -6,6 +6,8 @@ import { UserProfileAfterLogin } from "../Header";
 import { Drawer, IconButton, List, Typography } from "@material-tailwind/react";
 import { RxHamburgerMenu } from "react-icons/rx";
 
+const userlogin = true;
+
 export const SellContentHeader = () => {
   const linkData = [
     {
@@ -30,13 +32,11 @@ export const SellContentHeader = () => {
     },
   ];
 
-  const userlogin = true;
-
   return (
     <div className="relative">
       <div className=" hidden md:block h-[80px]  shadow-md  w-[600px] md:w-full ">
         <div className="bg-white z-50 py-2.5 relative h-full w-full my-container  ">
-          <div className="sticky top-0 left-0 right-0 flex items-center justify-between h-full">
+          <div className="sticky top-0 left-0 right-0 flex items-center justify-between h-full gap-3">
             <div className="flex items-center gap-16 md:gap-10 w-full justify-between  ">
               <div className="logo flex gap-1 items-center justify-between">
                 <LogoText />
@@ -84,7 +84,7 @@ export const SellContentHeader = () => {
 const HeaderMobile = ({ linkData }) => {
   return (
     <header className="bg-indigo-500 md:hidden sticky top-0 left-0 right-0 z-50">
-      <div className="flex justify-between py-[1rem] h-[3rem] max-w-[90%] mx-auto">
+      <div className="flex justify-between items-center h-[4rem] max-w-[90%] mx-auto">
         <div className="logo flex text-white">
           <Typography
             as="a"
@@ -93,6 +93,27 @@ const HeaderMobile = ({ linkData }) => {
             className="mr-4 font-normal cursor-pointer capitalize">
             pixel Nepal
           </Typography>
+        </div>
+        <div className="account gap-3  md:flex">
+          {userlogin ? (
+            <>
+              <UserProfileAfterLogin />
+            </>
+          ) : (
+            <>
+              <Link href="/contributor/login">
+                <button className="primary-outline-btn px-6 py-2.5 rounded-md flex items-center gap-2">
+                  <AiOutlineUserAdd size={18} />
+                  <span>Login</span>
+                </button>
+              </Link>
+              <Link href="/contributor/register">
+                <button className="primary-btn px-8 py-2.5 rounded-md">
+                  Sign up
+                </button>
+              </Link>
+            </>
+          )}
         </div>
         <SidebarMobile linkData={linkData} />
       </div>
